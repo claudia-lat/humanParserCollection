@@ -146,7 +146,7 @@ end
 tmp.timestampNormalized = wearData.timestamp - wearData.timestamp(1,1);
 wearData.estimatedFrameRate  = round(mean(1./(diff(tmp.timestampNormalized))));
 
-% --------FTSHOES
+%% FTSHOES
 tmp.leftFtShoeIndx  = find(strcmp(tmp.file{1, 1}, 'FTShoeLeftFTSensors'));
 tmp.rightFtShoeIndx = find(strcmp(tmp.file{1, 1}, 'FTShoeRightFTSensors'));
 
@@ -161,7 +161,7 @@ for shoeIdx = 1 : wearData.nrOfFrames
     end
 end
 
-% --------SENSORS from XsensSuit
+%% SENSORS
 listOfSensorsLabel = {'Head', ...
     'LeftFoot', ...
     'LeftForeArm', ...
@@ -259,7 +259,7 @@ wearData.links = cell(wearData.properties.nrOfLinks, 1);
 
 for linkIdx = 1 : wearData.properties.nrOfLinks
     wearData.links{linkIdx}.label = listOfLinksLabel{linkIdx};
-
+    
     tmp.vLinkIdx  = find(strcmp(tmp.file{1, 1}, strcat('XsensSuit::vLink::',listOfLinksLabel{linkIdx})));
     wearData.links{linkIdx}.meas.orientation         = zeros(4,wearData.nrOfFrames);
     wearData.links{linkIdx}.meas.position            = zeros(3,wearData.nrOfFrames);
@@ -268,7 +268,7 @@ for linkIdx = 1 : wearData.properties.nrOfLinks
     wearData.links{linkIdx}.meas.acceleration        = zeros(3,wearData.nrOfFrames);
     wearData.links{linkIdx}.meas.angularAcceleration = zeros(3,wearData.nrOfFrames);
     % no points from XsensSuit are outputted.
-
+    
     for frameIdx = 1 : wearData.nrOfFrames
         for vect4Idx = 1 : 4 % for quaternions
             % orientation
@@ -322,12 +322,12 @@ wearData.joints = cell(wearData.properties.nrOfJoints, 1);
 
 for jointIdx = 1 : wearData.properties.nrOfJoints
     wearData.joints{jointIdx}.label = listOfJointsLabel{jointIdx};
-
+    
     tmp.vJointIdx  = find(strcmp(tmp.file{1, 1}, strcat('XsensSuit::vSJoint::',listOfJointsLabel{jointIdx})));
     wearData.joints{jointIdx}.meas.angle        = zeros(3,wearData.nrOfFrames);
     %     wearData.joints{jointIdx}.meas.velocity     = zeros(3,wearData.nrOfFrames);
     %     wearData.joints{jointIdx}.meas.acceleration = zeros(3,wearData.nrOfFrames);
-
+    
     for frameIdx = 1 : wearData.nrOfFrames
         for vect3Idx = 1 : 3 % for 3D vectors
             % angle
