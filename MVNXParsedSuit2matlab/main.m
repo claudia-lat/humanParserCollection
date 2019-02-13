@@ -19,7 +19,7 @@ extractSuitDataFromParsing;
 if opts.suitPos
     % Optional: computation of the position of the sensors w.r.t. the frame
     %           of the attached link
-    suit = computeSuitSensorPosition(suit);
+    suit = computeSuitSensorPosition(suit, suit.properties.lenData);
 end
 
 %% Save struct

@@ -18,7 +18,7 @@ extractWearableDataFromIWear;
 if opts.sensorsPos
     % Optional: computation of the position of the sensors w.r.t. the frame
     %           of the attached link
-    wearData = computeSuitSensorPosition(wearData);
+    wearData = computeSuitSensorPosition(wearData, wearData.nrOfFrames);
 end
 
 %% Save struct
