@@ -3,8 +3,10 @@
 clc; close all; clear all;
 
 addpath(genpath('src'));
-addpath(genpath('external'));
 addpath(genpath('data'));
+
+addpath(genpath('../src'));
+addpath(genpath('../external'));
 
 opts.suitPos = true;
 
