@@ -23,6 +23,9 @@ if opts.suitPos
 end
 
 %% Save struct
+if ~exist(fullfile(pwd,'processed'),'dir')
+    mkdir (fullfile(pwd,'processed'));
+end
 save(fullfile(pwd,'processed/suit.mat'),'suit');
 
 disp(strcat('[End] Suit extraction'));
